@@ -3,9 +3,9 @@ import 'package:advbasics/question_summary.dart';
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key, required this.chosenAnswer});
+  const ResultScreen({super.key, required this.chosenAnswer, required this.onRestart});
 
-  void onRestart() {}
+final void Function() onRestart;
   final List<String> chosenAnswer;
 
   List<Map<String, Object>> getSummary() {

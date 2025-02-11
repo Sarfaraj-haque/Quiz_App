@@ -13,7 +13,7 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   final String image = 'assets/images/img1.png';
-   List<String> selectedAnswers = [];
+  List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   @override
@@ -37,6 +37,12 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = 'question-screen';
+    });
+  }
 
   @override
   Widget build(context) {
@@ -46,8 +52,11 @@ class _QuizState extends State<Quiz> {
         onSelectAnswer: chooseAnswer,
       );
     }
-    if(activeScreen == 'result-screen'){
-      screenWidget= ResultScreen(chosenAnswer: selectedAnswers,);
+    if (activeScreen == 'result-screen') {
+      screenWidget = ResultScreen(
+        onRestart: restartQuiz,
+        chosenAnswer: selectedAnswers,
+      );
     }
 
     return MaterialApp(
