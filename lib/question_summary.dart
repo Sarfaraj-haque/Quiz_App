@@ -11,28 +11,67 @@ class QuestionSummary extends StatelessWidget {
       height: 350,
       child: SingleChildScrollView(
         child: Column(
-            children: summaryData.map(
-          (data) {
-            return Row(children: [
-              Text(((data['question_index'] as int) + 1).toString()),
-              Expanded(
-                child: Column(
+          children: summaryData.map(
+            (data) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // Align items to the start
                   children: [
-                    Text(data['question'] as String),
-                    const SizedBox(
-                      height: 5,
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: Colors.blue,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Text(
+                        ((data['question_index'] as int) + 1).toString(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                    Text(data['question_Answer'] as String),
                     const SizedBox(
-                      height: 5,
+                      width: 10,
                     ),
-                    Text(data['your_Answer'] as String),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        // Align text to the start
+                        children: [
+                          Text(
+                            data['question'] as String,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            data['question_Answer'] as String,
+                            style: const TextStyle(
+                                color: Colors.blue, fontSize: 14),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            data['your_Answer'] as String,
+                            style: const TextStyle(
+                                color: Colors.grey, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-              )
-            ]);
-          },
-        ).toList()),
+              );
+            },
+          ).toList(),
+        ),
       ),
     );
   }

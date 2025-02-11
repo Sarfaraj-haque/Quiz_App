@@ -3,9 +3,10 @@ import 'package:advbasics/question_summary.dart';
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key, required this.chosenAnswer, required this.onRestart});
+  const ResultScreen(
+      {super.key, required this.chosenAnswer, required this.onRestart});
 
-final void Function() onRestart;
+  final void Function() onRestart;
   final List<String> chosenAnswer;
 
   List<Map<String, Object>> getSummary() {
@@ -38,7 +39,9 @@ final void Function() onRestart;
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-                'you answered $correctQuestions out of $totalQuestions questions correctly!'),
+              'You answered $correctQuestions out of $totalQuestions questions correctly!',
+              style: const TextStyle(fontSize: 20, color: Colors.white),
+            ),
             const SizedBox(height: 30),
             QuestionSummary(summaryData),
             const SizedBox(height: 30),
